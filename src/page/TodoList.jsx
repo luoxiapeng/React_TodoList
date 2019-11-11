@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import store from "../store";
-import { changeInputAction,addItemAction,deleteItemAction,getListData } from "../store/actionCreatores";
+import { changeInputAction,addItemAction,deleteItemAction,getListData,getMyListAction } from "../store/actionCreatores";
 import TodoListUi from "./ToduListUi";
-import axios from 'axios'
-// 引入redux-thunk
 
 
 
@@ -28,7 +26,12 @@ class TodoList extends Component {
     // })
 
     // 修改成react-thunk方式
-    const action=getListData()
+    // const action=getListData()
+    // store.dispatch(action)
+
+
+    // 使用saga的方式处理
+    const action=getMyListAction()
     store.dispatch(action)
   }
   

@@ -37,3 +37,10 @@ export const getListData=()=>{
     })
   }
 }
+
+
+//使用react-saga的方式
+
+export const getMyListAction =()=>({
+  type:actionType.GET_MY_LIST
+})
