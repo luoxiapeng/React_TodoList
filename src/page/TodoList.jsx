@@ -20,12 +20,16 @@ class TodoList extends Component {
   }
 
   componentDidMount(){
-    axios.get('https://www.easy-mock.com/mock/5cfcce489dc7c36bd6da2c99/xiaojiejie/getList').then((res)=>{
-      console.log(res.data)
-      const action=getListData(res.data)
-      store.dispatch(action)
+    // axios.get('https://www.easy-mock.com/mock/5cfcce489dc7c36bd6da2c99/xiaojiejie/getList').then((res)=>{
+    //   console.log(res.data)
+    //   const action=getListData(res.data)
+    //   store.dispatch(action)
 
-    })
+    // })
+
+    // 修改成react-thunk方式
+    const action=getListData()
+    store.dispatch(action)
   }
   
   render() { 
