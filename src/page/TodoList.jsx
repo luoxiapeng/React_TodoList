@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import store from "../store";
-import { changeInputAction,addItemAction,deleteItemAction } from "../store/actionCreatores";
+import { changeInputAction,addItemAction,deleteItemAction,getListData } from "../store/actionCreatores";
 import TodoListUi from "./ToduListUi";
+import axios from 'axios'
 
 class TodoList extends Component {
   constructor(props) {
@@ -9,10 +10,19 @@ class TodoList extends Component {
     this.state = store.getState()
     this.changeInputValue=this.changeInputValue.bind(this)
     this.deleteItem=this.deleteItem.bind(this)
-    console.log(this.state)
+    // console.log(this.state)
     // store改变就让页面订阅渲染
     this.storeChange = this.storeChange.bind(this)
     store.subscribe(this.storeChange) //订阅Redux的状态
+  }
+
+  componentDidMount(){
+    axios.get('https://www.easy-mock.com/mock/5cfcce489dc7c36bd6da2c99/xiaojiejie/getList').then((res)=>{
+      console.log(res.data)
+      const action=getListData(res.data)
+      store.dispatch(action)
+
+    })
   }
   
   render() { 
@@ -29,7 +39,6 @@ class TodoList extends Component {
   changeInputValue(e){
     const action=changeInputAction(e.target.value)
     store.dispatch(action)
-   
   }
   cliBtn=()=>{
     const action=addItemAction()

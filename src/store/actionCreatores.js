@@ -13,3 +13,8 @@ export const deleteItemAction =(index)=>({
   type:actionType.DELECT_ITEM,
   index
 })
+
+export const getListData=(data)=>({
+  type:actionType.GET_LIST_DATA,
+  data
+})

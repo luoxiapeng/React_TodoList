@@ -24,5 +24,9 @@ export default (state=defaultState,action)=>{
     newState.List.splice(action.index,1)
     return newState
   }
+  if(action.type===actionType.GET_LIST_DATA){
+    let newState=JSON.parse(JSON.stringify(state))
+    newState.List=action.data.data.list
+  }
   return state
 }
