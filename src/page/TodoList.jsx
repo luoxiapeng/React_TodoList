@@ -3,6 +3,9 @@ import store from "../store";
 import { changeInputAction,addItemAction,deleteItemAction,getListData } from "../store/actionCreatores";
 import TodoListUi from "./ToduListUi";
 import axios from 'axios'
+// 引入redux-thunk
+
+
 
 class TodoList extends Component {
   constructor(props) {
